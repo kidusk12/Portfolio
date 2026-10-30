@@ -2,7 +2,7 @@
 
 Personal portfolio website and one-page résumé for **Kidus Kidanewold**, a Computer Science student in Addis Ababa, Ethiopia, building backend systems and full-stack products. Open to internships and junior roles.
 
-**Live site:** [YOUR-SITE.netlify.app](https://YOUR-SITE.netlify.app)
+**Live site:** )
 
 ## Features
 
