@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root, [data-theme="dark"] {
+  --bg:#0B0D10; --surface:#14181D; --border:#262C2F; --text:#E8E6E1; --muted:#9AA0A6;
+  --accent:#D4A24C; --accent-ink:#0B0D10; color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg:#FAF8F4; --surface:#FFFFFF; --border:#E2DED6; --text:#14181D; --muted:#5B6168;
+  --accent:#8A6414; --accent-ink:#FFFFFF; color-scheme: light;
+}
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+body { background: var(--bg); color: var(--text); line-height: 1.6; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+@layer components {
+  .btn { @apply inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition duration-200 hover:-translate-y-0.5; }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-ghost { border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .card { @apply rounded-xl p-6 transition duration-200 hover:-translate-y-1; background: var(--surface); border: 1px solid var(--border); }
+  .chip { @apply rounded-md px-2 py-0.5 font-mono text-xs; border: 1px solid var(--border); color: var(--muted); }
+}
+
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity .4s ease, transform .4s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .btn, .card { transition: none; transform: none !important; }
+}
+
+/* Resume (A4) */
+.resume-bg { background: #e5e5e5; min-height: 100vh; padding: 24px 12px; }
+.sheet { width: 210mm; max-width: 100%; min-height: 297mm; margin: 0 auto; padding: 16mm 17mm; background: #fff; color: #000;
+  font-family: Calibri, Arial, sans-serif; font-size: 10.5pt; line-height: 1.4; box-shadow: 0 4px 24px rgba(0,0,0,.15); }
+.sheet h1 { font-size: 20pt; font-weight: 700; line-height: 1.2; }
+.sheet h2 { font-size: 10.5pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin: 12px 0 4px; }
+.sheet ul { list-style: disc; padding-left: 18px; }
+.sheet a { color: #000; text-decoration: none; }
+.sheet .rule { border: 0; border-top: 1.5px solid #8A6414; margin: 8px 0 0; }
+@media print {
+  @page { size: A4; margin: 15mm 16mm; }
+  body, .resume-bg { background: #fff !important; padding: 0 !important; }
+  .no-print { display: none !important; }
+  .sheet { box-shadow: none; width: auto; min-height: 0; padding: 0; margin: 0; }
+}
